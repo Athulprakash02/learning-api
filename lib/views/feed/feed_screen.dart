@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
 import 'package:trogon_media/controller/services/feed%20services/feed_services.dart';
 import 'package:trogon_media/model/feed%20model/feed_model.dart';
@@ -108,8 +109,9 @@ class FeedScreen extends StatelessWidget {
                               const SizedBox(
                                 height: 10,
                               ),
+                              
                               Text(
-                                feeds.data![index].content!,
+                                parse(feeds.data![index].content!,).documentElement!.text,
                                 style: const TextStyle(fontSize: 16, height: 2),
                               )
                             ],
