@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trogon_media/views/course/course_screen.dart';
+import 'package:trogon_media/views/feed/feed_screen.dart';
 import 'package:trogon_media/views/home/home.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _BaseScreenState extends State<BaseScreen> {
     const HomeScreen(),
     const CourseScreen(),
     const SizedBox(),
-    const SizedBox()
+    const FeedScreen(),
   ];
   int _currentIndex = 0;
   @override
@@ -26,7 +27,8 @@ class _BaseScreenState extends State<BaseScreen> {
         leading: IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.menu,size: 30,
+              Icons.menu,
+              size: 30,
               color: Colors.black,
             )),
         actions: const [
@@ -34,16 +36,17 @@ class _BaseScreenState extends State<BaseScreen> {
             padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.notifications,
-              color: Colors.blue,size: 30,
+              color: Colors.blue,
+              size: 30,
             ),
           )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey,
           currentIndex: _currentIndex,
           onTap: (value) {
             setState(() {
