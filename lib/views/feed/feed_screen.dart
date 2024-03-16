@@ -36,80 +36,84 @@ class FeedScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(
                                   255, 255, 254, 254), // Shadow color
-                              spreadRadius: 3,
-                              blurRadius: 3,
-                              offset: Offset(1, 3),
+                              spreadRadius: 0,
+                              blurRadius: 0,
+                              offset: Offset(0, 3),
                             ),
                           ],
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: size.width,
-                              height: size.width / 2,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image:
-                                        NetworkImage(feeds!.data![index].file!),
-                                    fit: BoxFit.cover),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                const Icon(Icons.favorite_border,color: Colors.red,),
-                                Text(feeds.data![index].likeCount!.toString(),style: const TextStyle(fontSize: 16),),
-                                const Spacer(),
-                                const Icon(Icons.bookmark_border_outlined)
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  feeds.data![index].category == null
-                                      ? 'Exams'
-                                      : feeds.data![index].category
-                                          .toString()
-                                          .substring(9),
-                                  style: TextStyle(
-                                      color: Colors.blue.shade500,
-                                      fontSize: 16),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              
+                              Container(
+                                width: size.width,
+                                height: size.width / 2,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image:
+                                          NetworkImage(feeds!.data![index].file!),
+                                      fit: BoxFit.cover),
                                 ),
-                                const Spacer(),
-                                Text(
-                                  DateFormat('dd-MM-yyyy')
-                                      .format(feeds.data![index].updatedOn!),
-                                  style: const TextStyle(color: Colors.grey),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              feeds.data![index].title!,
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              feeds.data![index].content!,
-                              style: const TextStyle(fontSize: 16, height: 2),
-                            )
-                          ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(Icons.favorite_border,color: Colors.red,),
+                                  Text(feeds.data![index].likeCount!.toString(),style: const TextStyle(fontSize: 16),),
+                                  const Spacer(),
+                                  const Icon(Icons.bookmark_border_outlined)
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    feeds.data![index].category == null
+                                        ? 'Exams'
+                                        : feeds.data![index].category
+                                            .toString()
+                                            .substring(9),
+                                    style: TextStyle(
+                                        color: Colors.blue.shade500,
+                                        fontSize: 16),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    DateFormat('dd-MM-yyyy')
+                                        .format(feeds.data![index].updatedOn!),
+                                    style: const TextStyle(color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                feeds.data![index].title!,
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                feeds.data![index].content!,
+                                style: const TextStyle(fontSize: 16, height: 2),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );
