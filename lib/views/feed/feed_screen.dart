@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:trogon_media/controller/services/feed%20services/feed_services.dart';
 import 'package:trogon_media/model/feed%20model/feed_model.dart';
 
@@ -10,9 +11,9 @@ class FeedScreen extends StatelessWidget {
     Size size = MediaQuery.sizeOf(context);
     FeedService feedService = FeedService();
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Feed',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-      // ),
+      appBar: AppBar(
+        title: const Text('Feed',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder<FeedModel>(
@@ -38,8 +39,8 @@ class FeedScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: const [
                             BoxShadow(
-                              color: Color.fromARGB(255, 255, 254, 254)
-                                  , // Shadow color
+                              color: Color.fromARGB(
+                                  255, 255, 254, 254), // Shadow color
                               spreadRadius: 3,
                               blurRadius: 3,
                               offset: Offset(1, 3),
@@ -59,25 +60,42 @@ class FeedScreen extends StatelessWidget {
                                     fit: BoxFit.cover),
                               ),
                             ),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Row(
                               children: [
-                                const Icon(Icons.favorite_border),
-                                Text(feeds.data![index].likeCount!.toString()),
+                                const Icon(Icons.favorite_border,color: Colors.red,),
+                                Text(feeds.data![index].likeCount!.toString(),style: const TextStyle(fontSize: 16),),
                                 const Spacer(),
                                 const Icon(Icons.bookmark_border_outlined)
                               ],
                             ),
                             const SizedBox(
-                              height: 5,
+                              height: 10,
                             ),
-                            Text(
-                              feeds.data![index].category == null
-                                  ? 'Exams'
-                                  : feeds.data![index].category
-                                      .toString()
-                                      .substring(9),
-                              style: TextStyle(
-                                  color: Colors.blue.shade500, fontSize: 16),
+                            Row(
+                              children: [
+                                Text(
+                                  feeds.data![index].category == null
+                                      ? 'Exams'
+                                      : feeds.data![index].category
+                                          .toString()
+                                          .substring(9),
+                                  style: TextStyle(
+                                      color: Colors.blue.shade500,
+                                      fontSize: 16),
+                                ),
+                                const Spacer(),
+                                Text(
+                                  DateFormat('dd-MM-yyyy')
+                                      .format(feeds.data![index].updatedOn!),
+                                  style: const TextStyle(color: Colors.grey),
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             Text(
                               feeds.data![index].title!,
@@ -85,7 +103,7 @@ class FeedScreen extends StatelessWidget {
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(
-                              height: 8,
+                              height: 10,
                             ),
                             Text(
                               feeds.data![index].content!,

@@ -27,6 +27,27 @@ class CourseScreen extends StatelessWidget {
             CourseModel? details = snapshot.data;
 
             return Scaffold(
+              appBar: AppBar(
+        // backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.menu,
+              size: 30,
+              color: Colors.black,
+            )),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications,
+              color: Colors.blue,
+              size: 30,
+            ),
+          )
+        ],
+      ),
               body: Padding(
                 padding: EdgeInsets.all(size.width / 16),
                 child: SingleChildScrollView(

@@ -27,7 +27,27 @@ class HomeScreen extends StatelessWidget {
           } else if (snapshot.hasData && snapshot.data != null) {
             HomeModel? details = snapshot.data;
             return Scaffold(
-              
+              appBar: AppBar(
+                // backgroundColor: Colors.white,
+                elevation: 0,
+                leading: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.menu,
+                      size: 30,
+                      color: Colors.black,
+                    )),
+                actions: const [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.notifications,
+                      color: Colors.blue,
+                      size: 30,
+                    ),
+                  )
+                ],
+              ),
               body: Padding(
                 padding: EdgeInsets.all(size.width / 16),
                 child: SingleChildScrollView(
@@ -46,7 +66,6 @@ class HomeScreen extends StatelessWidget {
                               imageUrl: details.data!.adBanner![3].image!),
                         ],
                         options: CarouselOptions(
-                          
                           height: size.width * .45,
                           enlargeCenterPage: true,
                           autoPlay: true,
@@ -69,10 +88,13 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      OurProgrammesWidget(details: details,size: size,),
-
-                      
-                      Image(image: NetworkImage(details.data!.currentAffairsImageUrl!))
+                      OurProgrammesWidget(
+                        details: details,
+                        size: size,
+                      ),
+                      Image(
+                          image: NetworkImage(
+                              details.data!.currentAffairsImageUrl!))
                     ],
                   ),
                 ),
@@ -84,4 +106,3 @@ class HomeScreen extends StatelessWidget {
         });
   }
 }
-
