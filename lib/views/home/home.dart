@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
                               imageUrl: details.data!.adBanner![3].image!),
                         ],
                         options: CarouselOptions(
+                          
                           height: size.width * .45,
                           enlargeCenterPage: true,
                           autoPlay: true,
